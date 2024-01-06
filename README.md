@@ -1,5 +1,4 @@
 # Practica2-SO
-[!NOTE]
 Pràctica 2
 1. Objectius
 L'objectiu principal serà construir una aplicació web a partir de l'API Web desenvolupada en el primer lliurament.
