@@ -58,7 +58,7 @@ public class SignUpFormController {
             return "signup-form.jsp";
         }
        
-        User user = service.findUserByEmail(userForm.getEmail());
+        User user = service.findUserByName(userForm.getEmail());
         if (user != null) {
             // Try again
             log.log(Level.WARNING, "A user with this e-mail address {0} already exists.", userForm.getEmail());
