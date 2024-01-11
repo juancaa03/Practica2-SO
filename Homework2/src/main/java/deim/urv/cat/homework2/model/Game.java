@@ -22,7 +22,7 @@ public class Game {
     public Game() {
     }
 
-    public Game(String nom, String videoconsola, boolean disponibilitat, double preuLloguer, String descripcio, String tipus, String adrecaBotigues, List<Lloguer> lloguers) {
+    public Game(String nom, String videoconsola, boolean disponibilitat, double preuLloguer, String descripcio, String tipus, String adrecaBotigues, List<Rental> lloguers) {
         this.nom = nom;
         this.videoconsola = videoconsola;
         this.disponibilitat = disponibilitat;
@@ -109,11 +109,11 @@ public class Game {
         this.adrecaBotigues = adrecaBotigues;
     }
 
-    public List<Lloguer> getLloguers() {
+    public List<Rental> getLloguers() {
         return lloguers;
     }
 
-    public void setLloguers(List<Lloguer> lloguers) {
+    public void setLloguers(List<Rental> lloguers) {
         this.lloguers = lloguers;
     }
     

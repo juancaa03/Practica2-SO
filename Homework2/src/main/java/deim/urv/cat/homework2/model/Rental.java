@@ -18,8 +18,7 @@ public class Rental {
     public Rental() {
     }
 
-    public Rental(Date dataInici, Date dataFi, Videojoc videojoc, Usuari usuari) {
-        this.id = id;
+    public Rental(Date dataInici, Date dataFi, Game videojoc, User usuari) {
         this.dataInici = dataInici;
         this.dataFi = dataFi;
         this.videojoc = videojoc;
