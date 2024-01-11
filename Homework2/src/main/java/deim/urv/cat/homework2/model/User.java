@@ -1,35 +1,71 @@
 package deim.urv.cat.homework2.model;
 
+import java.util.List;
+
 public class User {
-    private String firstName;
-    private String lastName;
-    private String email;
+    private Long id;
 
-    public String getFirstName() {
-        return fixNull(this.firstName);
+    private String nomUsuari, correu;
+    private String contrasenya;
+    private List<Rental> lloguers;
+
+    public User() {
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public User(String nomUsuari, String correu, String contrasenya, List<Rental> lloguers) {
+        this.nomUsuari = nomUsuari;
+        this.correu = correu;
+        this.contrasenya = contrasenya;
+        this.lloguers = lloguers;
     }
 
-    public String getLastName() {
-        return fixNull(this.lastName);
+    public User(Long id, String nomUsuari, String correu, String contrasenya, List<Rental> lloguers) {
+        this.id = id;
+        this.nomUsuari = nomUsuari;
+        this.correu = correu;
+        this.contrasenya = contrasenya;
+        this.lloguers = lloguers;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public Long getId() {
+        return id;
     }
 
-    public String getEmail() {
-        return fixNull(this.email);
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getNomUsuari() {
+        return nomUsuari;
     }
 
-    private String fixNull(String in) {
-        return (in == null) ? "" : in;
+    public void setNomUsuari(String nomUsuari) {
+        this.nomUsuari = nomUsuari;
     }
+
+    public String getCorreu() {
+        return correu;
+    }
+
+    public void setCorreu(String correu) {
+        this.correu = correu;
+    }
+
+    public String getContrasenya() {
+        return contrasenya;
+    }
+
+    public void setContrasenya(String contrasenya) {
+        this.contrasenya = contrasenya;
+    }
+
+    public List<Rental> getLloguers() {
+        return lloguers;
+    }
+
+    public void setLloguers(List<Rental> lloguers) {
+        this.lloguers = lloguers;
+    }
+    
+    
 }
