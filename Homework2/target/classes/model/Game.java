@@ -4,10 +4,11 @@
  */
 package deim.urv.cat.homework2.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class Game {
+public class Game implements Serializable{
     private Long id;
 
     private String nom;
@@ -22,6 +23,30 @@ public class Game {
     public Game() {
     }
 
+    public Game(Long id, String nom, String videoconsola, boolean disponibilitat, double preuLloguer, String descripcio, String tipus, String adrecaBotigues, List<Rental> lloguers) {
+        this.id = id;
+        this.nom = nom;
+        this.videoconsola = videoconsola;
+        this.disponibilitat = disponibilitat;
+        this.preuLloguer = preuLloguer;
+        this.descripcio = descripcio;
+        this.tipus = tipus;
+        this.adrecaBotigues = adrecaBotigues;
+        this.lloguers = lloguers;
+    }
+
+    public Game(Long id, String nom, String videoconsola, boolean disponibilitat, double preuLloguer, String descripcio, String tipus, String adrecaBotigues) {
+        this.id = id;
+        this.nom = nom;
+        this.videoconsola = videoconsola;
+        this.disponibilitat = disponibilitat;
+        this.preuLloguer = preuLloguer;
+        this.descripcio = descripcio;
+        this.tipus = tipus;
+        this.adrecaBotigues = adrecaBotigues;
+    }
+
+    
     public Game(String nom, String videoconsola, boolean disponibilitat, double preuLloguer, String descripcio, String tipus, String adrecaBotigues, List<Rental> lloguers) {
         this.nom = nom;
         this.videoconsola = videoconsola;

@@ -1,8 +1,9 @@
 package deim.urv.cat.homework2.controller;
 
 import deim.urv.cat.homework2.model.AlertMessage;
+import deim.urv.cat.homework2.model.*;
 import deim.urv.cat.homework2.model.SignUpAttempts;
-import deim.urv.cat.homework2.service.UserService;
+import deim.urv.cat.homework2.service.*;
 import deim.urv.cat.homework2.model.User;
 
 import jakarta.inject.Inject;
@@ -17,6 +18,7 @@ import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import java.util.List;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +33,7 @@ public class SignUpFormController {
     @Inject Models models;
     @Inject AlertMessage flashMessage;
     @Inject SignUpAttempts attempts;
+    //@Inject GameService gameService;
     
     @GET
     public String showForm() {
