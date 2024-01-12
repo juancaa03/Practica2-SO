@@ -39,7 +39,7 @@ public class SignUpFormController {
     @GET
     public String showForm() {
         List<Game> games = gameService.getAllGames();
-        models.put("game", games);
+        models.put("games", games);
         System.out.println("--VIDEOGAMES NUMBER--"+games.size());
         return "signup-form.jsp"; // Injects CRSF token
     }    
