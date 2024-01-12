@@ -1,8 +1,9 @@
 package deim.urv.cat.homework2.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
+public class User{
     private Long id;
 
     private String nomUsuari, correu;
@@ -12,6 +13,19 @@ public class User {
     public User() {
     }
 
+    public User(Long id, String nomUsuari, String correu, String contrasenya) {
+        this.id = id;
+        this.nomUsuari = nomUsuari;
+        this.correu = correu;
+        this.contrasenya = contrasenya;
+    }
+
+    public User(String nomUsuari, String correu, String contrasenya) {
+        this.nomUsuari = nomUsuari;
+        this.correu = correu;
+        this.contrasenya = contrasenya;
+    }
+    
     public User(String nomUsuari, String correu, String contrasenya, List<Rental> lloguers) {
         this.nomUsuari = nomUsuari;
         this.correu = correu;

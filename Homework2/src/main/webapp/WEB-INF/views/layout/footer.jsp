@@ -6,17 +6,5 @@
                 <strong>Copyright@</strong>
                 <span class="text-muted">Marc Sanchez marc.sanchez@urv.cat</span>
             </div>
-            <h1>Lista de Videojuegos</h1>
-            <ul>
-                <c:forEach var="game" items="${SignUpFormController.games}">
-                <li>
-                    ${game.disponibilitat}<br>
-                    ${game.id}<br>
-                    ${game.nom}<br>
-                    ${game.preuLloguer}<br>
-                    ${game.videoconsola}<br>
-                </li>
-                </c:forEach>
-            </ul>
         </div>
 </footer>

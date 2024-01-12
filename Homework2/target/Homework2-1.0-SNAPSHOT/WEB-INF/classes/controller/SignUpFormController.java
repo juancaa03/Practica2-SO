@@ -33,10 +33,14 @@ public class SignUpFormController {
     @Inject Models models;
     @Inject AlertMessage flashMessage;
     @Inject SignUpAttempts attempts;
-    //@Inject GameService gameService;
+    //@Inject UserService userService;
+    @Inject GameService gameService;
     
     @GET
     public String showForm() {
+        List<Game> games = gameService.getAllGames();
+        models.put("game", games);
+        System.out.println("--VIDEOGAMES NUMBER--"+games.size());
         return "signup-form.jsp"; // Injects CRSF token
     }    
     

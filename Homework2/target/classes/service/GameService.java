@@ -20,7 +20,7 @@ import java.util.List;
 public class GameService {
     private final WebTarget webTarget;
     private final jakarta.ws.rs.client.Client client;
-    private static final String BASE_URI = "http://localhost:8080/webresources/rest/api/v1";
+    private static final String BASE_URI = "http://localhost:8080/Homework1/webresources/rest/api/v1";
     
     public GameService() {
         client = jakarta.ws.rs.client.ClientBuilder.newClient();
@@ -31,7 +31,7 @@ public class GameService {
         try {
         System.out.println("--ANTES DE LA LLAMADA A LA API--");
         Response response = webTarget.request(MediaType.APPLICATION_JSON).get();
-        System.out.println("--DESPUES DE LA LLAMADA A LA API--");
+        System.out.println("--DESPUES DE LA LLAMADA A LA API--"+response);
 
         if (response.getStatus() == Response.Status.OK.getStatusCode()) {
             return response.readEntity(new GenericType<List<Game>>() {});
