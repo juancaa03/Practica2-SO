@@ -25,24 +25,25 @@
 <body>
     <h1 id="first-title">GameShop</h1>
     
-    <button type="button" class="btn btn-primary filterB" onclick="mostrarFiltros()">Filtrar</button>
+    <h2>Welcome, ${usuari.nomUsuari}</h2>
+    <button type="button" class="btn btn-primary filterB" onclick="mostrarFiltros()">Filters</button>
     
     <form id="filtro-form">
         <div class="row">
             <div class="col-md-3">
                 <div class="filter-menu">
-                    <label>Filtrar por Tipo:</label>
+                    <label>Type</label>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="accion" value="accion">
-                        <label class="form-check-label" for="accion">Acción</label>
+                        <label class="form-check-label" for="accion">Action</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="aventura" value="aventura">
-                        <label class="form-check-label" for="aventura">Aventura</label>
+                        <label class="form-check-label" for="aventura">Adventure</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="estrategia" value="estrategia">
-                        <label class="form-check-label" for="estrategia">Estrategia</label>
+                        <label class="form-check-label" for="estrategia">Strategy</label>
                     </div>
                     <!-- Agrega más opciones según tus tipos de videojuegos -->
                 </div>
@@ -50,7 +51,7 @@
 
             <div class="col-md-3">
                 <div class="filter-menu">
-                    <label>Filtrar por Videoconsola:</label>
+                    <label>Console</label>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="nintendo" value="nintendo">
                         <label class="form-check-label" for="nintendo">Nintendo</label>
@@ -62,6 +63,25 @@
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="xbox" value="xbox">
                         <label class="form-check-label" for="xbox">Xbox</label>
+                    </div>
+                    <!-- Agrega más opciones según tus videoconsolas -->
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="filter-menu">
+                    <label>Price</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="minPrice" value="minPrice">
+                        <label class="form-check-label" for="minPrice">0 - 15€</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="midPrice" value="midPrice">
+                        <label class="form-check-label" for="midPrice">15€ - 40€</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="maxPrice" value="maxPrice">
+                        <label class="form-check-label" for="maxPrice">+ 40€</label>
                     </div>
                     <!-- Agrega más opciones según tus videoconsolas -->
                 </div>
@@ -91,8 +111,7 @@
         var tipoVideojuego = obtenerSeleccionados("tipoVideojuego");
         var videoconsola = obtenerSeleccionados("videoconsola");
 
-        // Aquí puedes realizar una solicitud AJAX al servidor con los parámetros de filtro
-        // y actualizar el contenido de la página sin recargarla
+        //Codigo para poder aplicar el filtro
 
         // Ejemplo de cómo podrías mostrar los valores seleccionados en la consola
         console.log("Tipo de Videojuego seleccionado: " + tipoVideojuego);

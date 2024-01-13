@@ -23,3 +23,4 @@ deim\urv\cat\homework2\model\Game.class
 deim\urv\cat\homework2\service\GameService$1.class
 deim\urv\cat\homework2\controller\UserForm.class
 deim\urv\cat\homework2\model\Rental.class
+deim\urv\cat\homework2\service\UserService$1.class

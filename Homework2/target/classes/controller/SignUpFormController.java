@@ -33,7 +33,7 @@ public class SignUpFormController {
     @Inject Models models;
     @Inject AlertMessage flashMessage;
     @Inject SignUpAttempts attempts;
-    //@Inject UserService userService;
+    @Inject UserService userService;
     @Inject GameService gameService;
     
     @GET
@@ -41,6 +41,9 @@ public class SignUpFormController {
         List<Game> games = gameService.getAllGames();
         models.put("games", games);
         System.out.println("--VIDEOGAMES NUMBER--"+games.size());
+        String name = "AbrilGuzman";
+        User usuari = userService.findUserByNameInList(name);
+        models.put("usuari", usuari);
         return "signup-form.jsp"; // Injects CRSF token
     }    
     
@@ -65,7 +68,7 @@ public class SignUpFormController {
             return "signup-form.jsp";
         }
        
-        User user = service.findUserByName(userForm.getEmail());
+        User user = service.findUserByNameInList(userForm.getEmail());
         if (user != null) {
             // Try again
             log.log(Level.WARNING, "A user with this e-mail address {0} already exists.", userForm.getEmail());
@@ -77,5 +80,5 @@ public class SignUpFormController {
         service.addUser(userForm);
         attempts.reset();
         return "signup-success.jsp";
-    } 
+    }
 }

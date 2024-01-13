@@ -18,6 +18,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .card {
@@ -58,6 +60,7 @@ hr {
 
 #filtro-form {
     display: none;
+    margin-left: 40px;
 }
 
 .filterB {
