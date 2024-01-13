@@ -12,17 +12,27 @@ public class UserService implements Serializable{
     
     private final WebTarget webTarget;
     private final jakarta.ws.rs.client.Client client;
-    private static final String BASE_URI = "http://localhost:8080/Homework1/webresources/rest/api/v1/usuari";
+    private static final String BASE_URI = "http://localhost:8080/Homework1/webresources/rest/api/v1";
+    
+    private User loggedInUser;
     
     public UserService() {
         client = jakarta.ws.rs.client.ClientBuilder.newClient();
-        webTarget = client.target(BASE_URI);
-                //.path("usuari");
+        webTarget = client.target(BASE_URI).path("usuari");
     }
     
+    public User findUserByEmail(String email){
+        Response response = webTarget.path(email)
+                .request(MediaType.APPLICATION_JSON)
+                .get();
+        if (response.getStatus() == 200) {
+            return response.readEntity(User.class);
+        }
+        return null;
+    }
     
     public User findUserByName(String name){
-        Response response = webTarget/*.path(name)*/
+        Response response = webTarget.path(name)
                 .request(MediaType.APPLICATION_JSON)
                 .get();
         if (response.getStatus() == 200) {
@@ -38,6 +48,14 @@ public class UserService implements Serializable{
        Response response = webTarget.request(MediaType.APPLICATION_JSON)
                .post(Entity.entity(user, MediaType.APPLICATION_JSON), 
                     Response.class);
-     return response.getStatus() == 201;
+       if(response.getStatus() == 201){
+           loggedInUser = response.readEntity(User.class);
+           return true;
+       }
+       return false;
+    }
+    
+    public User getLoggedInUser() {
+        return loggedInUser;
     }
 }

@@ -2,6 +2,7 @@ deim\urv\cat\homework2\model\AlertMessage.class
 deim\urv\cat\homework2\service\GameService.class
 deim\urv\cat\homework2\resources\JakartaEE9Resource.class
 deim\urv\cat\homework2\model\AlertMessage$Error.class
+deim\urv\cat\homework2\controller\MainController.class
 deim\urv\cat\homework2\model\AlertMessage$1.class
 deim\urv\cat\homework2\service\RentService$1.class
 deim\urv\cat\homework2\Config.class
