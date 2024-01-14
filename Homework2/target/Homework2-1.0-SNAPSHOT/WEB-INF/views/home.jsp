@@ -24,24 +24,125 @@
 </head>
 <body>
     <h1 id="first-title">GameShop</h1>
-        
+    
+    <h2 class="welcome">Welcome, ${usuari.nomUsuari}!</h2>
+    
+    <div class="button-container">
+        <button type="button" id="loginB" class="btn btn-prymary Ibuttons" onclick="">Login</button>
+        <button type="button" id="filterB" class="btn btn-primary Ibuttons" onclick="mostrarFiltros()"><img src="${pageContext.request.contextPath}/resources/img/sliders-horizontal.svg" alt="alt" class=""/></button>
+    </div>
+    
+    <form id="filtro-form">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="filter-menu">
+                    <label>Type</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="accion" value="accion">
+                        <label class="form-check-label" for="accion">Action</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="aventura" value="aventura">
+                        <label class="form-check-label" for="aventura">Adventure</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="estrategia" value="estrategia">
+                        <label class="form-check-label" for="estrategia">Strategy</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="filter-menu">
+                    <label>Console</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="nintendo" value="nintendo">
+                        <label class="form-check-label" for="nintendo">Nintendo</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="playstation" value="playstation">
+                        <label class="form-check-label" for="playstation">PlayStation</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="xbox" value="xbox">
+                        <label class="form-check-label" for="xbox">Xbox</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="filter-menu">
+                    <label>Price</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="minPrice" value="minPrice">
+                        <label class="form-check-label" for="minPrice">0 - 15€</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="midPrice" value="midPrice">
+                        <label class="form-check-label" for="midPrice">15€ - 40€</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="maxPrice" value="maxPrice">
+                        <label class="form-check-label" for="maxPrice">+ 40€</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" id="aplyFilter" class="btn btn-primary Ibuttons" onclick="aplicarFiltro()">Aply</button>
+    </form>
+    
     <div class="container custom-container">
         <div class="row">
             <c:forEach var="videojuego" items="${games}">
                 <div class="col-md-4">
                     <a href="gameDetail.jsp?id=${videojuego.id}">
-                        <div class="card" id="videojuego_${videojuego.id}">
+                        <div class="card">
                             <img src="${pageContext.request.contextPath}/resources/img/quake.jpg" alt="Quake" class="gameImage">
                             <hr>
-                            <h2>${videojuego.nom}</h2>
+                            <h3>${videojuego.nom}</h3>
                             <p>${videojuego.preuLloguer}€</p>
-                            <p>${videojuego.disponibilitat ? 'Disponible' : 'No disponible'}</p>
+                            <p class="disponibilidad">
+                                <img src="${pageContext.request.contextPath}/resources/img/${videojuego.disponibilitat ? 'dispo.svg' : 'noDispo.svg'}" 
+                 alt="${videojuego.disponibilitat ? 'Disponible' : 'No disponible'}" 
+                 class="${videojuego.disponibilitat ? 'disponible-icon dIcon' : 'no-disponible-icon dIcon'}" />
+            <span>${videojuego.disponibilitat ? 'Disponible' : 'No disponible'}</span>
+                            </p>
                         </div>
                     </a>
                 </div>
             </c:forEach>
         </div>
     </div>
+    <script>
+        function mostrarFiltros() {
+        var filtroForm = document.getElementById("filtro-form");
+        filtroForm.style.display = filtroForm.style.display === "none" ? "block" : "none";
+    }
+    
+        function aplicarFiltro() {
+        var tipoVideojuego = obtenerSeleccionados("tipoVideojuego");
+        var videoconsola = obtenerSeleccionados("videoconsola");
 
+        //Codigo para poder aplicar el filtro
+
+        // Ejemplo de cómo podrías mostrar los valores seleccionados en la consola
+        console.log("Tipo de Videojuego seleccionado: " + tipoVideojuego);
+        console.log("Videoconsola seleccionada: " + videoconsola);
+    }
+
+    function obtenerSeleccionados(name) {
+        var checkboxes = document.getElementsByName(name);
+        var opcionesSeleccionadas = [];
+
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                opcionesSeleccionadas.push(checkboxes[i].value);
+            }
+        }
+
+        return opcionesSeleccionadas.join(",");
+    }
+    </script>
 </body>
 </html>

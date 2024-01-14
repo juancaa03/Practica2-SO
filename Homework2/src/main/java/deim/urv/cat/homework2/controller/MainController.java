@@ -27,7 +27,7 @@ public class MainController {
         List<Game> games = gameService.getAllGames();
         models.put("games", games);
         System.out.println("--VIDEOGAMES NUMBER--"+games.size());
-        String name = "AbrilGuzman";
+        String name = "JuancaAlonso";
         User usuari = userService.findUserByNameInList(name);
         models.put("usuari", usuari);
         return "home.jsp";
