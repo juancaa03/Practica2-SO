@@ -14,6 +14,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 
 
@@ -40,6 +41,19 @@ public class GameService {
         e.printStackTrace();
     }
     return Collections.emptyList();
+    }
+    
+    public Game getGameById(Long id) {
+    // Obtener la lista completa de games
+        List<Game> gamesList = getAllGames();
+
+        // Filtrar la lista por el nombre de game
+        Optional<Game> gameOptional = gamesList.stream()
+            .filter(game -> game.getId().equals(id))
+            .findFirst();
+
+        // Devolver el game si se encuentra, o null si no
+        return gameOptional.orElse(null);
     }
 
     public boolean addGame(Game game) {
