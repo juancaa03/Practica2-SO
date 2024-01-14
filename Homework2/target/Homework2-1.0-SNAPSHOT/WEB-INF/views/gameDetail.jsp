@@ -1,9 +1,3 @@
-<%-- 
-    Document   : gameDetail
-    Created on : 13 ene 2024, 20:39:47
-    Author     : juanc
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

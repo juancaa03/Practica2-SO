@@ -24,15 +24,24 @@
 </head>
 <body>
     <h1 id="first-title">GameShop</h1>
-
-    <div class="card-container">
-        <c:forEach var="videojuego" items="${games}">
-            <div class="card">
-                <h2>${videojuego.nom}</h2>
-                <p>Precio: ${videojuego.preuLloguer}€</p>
-                <p>${videojuego.disponibilitat ? 'Disponible' : 'No disponible'}</p>
-            </div>
-        </c:forEach>
+        
+    <div class="container custom-container">
+        <div class="row">
+            <c:forEach var="videojuego" items="${games}">
+                <div class="col-md-4">
+                    <a href="gameDetail.jsp?id=${videojuego.id}">
+                        <div class="card" id="videojuego_${videojuego.id}">
+                            <img src="${pageContext.request.contextPath}/resources/img/quake.jpg" alt="Quake" class="gameImage">
+                            <hr>
+                            <h2>${videojuego.nom}</h2>
+                            <p>${videojuego.preuLloguer}€</p>
+                            <p>${videojuego.disponibilitat ? 'Disponible' : 'No disponible'}</p>
+                        </div>
+                    </a>
+                </div>
+            </c:forEach>
+        </div>
     </div>
+
 </body>
 </html>
