@@ -31,9 +31,7 @@
     
     <div class="button-container">
         <c:if test="${not isLoggedIn}">
-            <a href="Login" target="_blank">
-                <button type="button" id="loginB" class="btn btn-prymary Ibuttons">Login</button>
-            </a>
+            <button type="button" id="loginB" class="btn btn-prymary Ibuttons" onclick="redirectToLogin()">Login</button>
         </c:if>
         <button type="button" id="filterB" class="btn btn-primary Ibuttons" onclick="mostrarFiltros()"><img src="${pageContext.request.contextPath}/resources/img/sliders-horizontal.svg" alt="alt" class=""/></button>
     </div>
@@ -151,7 +149,7 @@
     }
     
     function redirectToLogin() {
-        window.location.href = 'Login';
+        window.open('Login', '_blank');
     }
     </script>
 </body>
