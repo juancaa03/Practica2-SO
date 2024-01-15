@@ -47,7 +47,7 @@ public class SignUpFormController {
         return "signup-form.jsp"; // Injects CRSF token
     }    
     
-    @POST
+    /*@POST
     @UriRef("sign-up")
     @CsrfProtected
     public String signUp(@Valid @BeanParam UserForm userForm) {
@@ -80,5 +80,5 @@ public class SignUpFormController {
         service.addUser(userForm);
         attempts.reset();
         return "signup-success.jsp";
-    }
+    }*/
 }

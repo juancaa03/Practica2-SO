@@ -25,10 +25,16 @@
 <body>
     <h1 id="first-title">GameShop</h1>
     
-    <h2 class="welcome">Welcome, ${usuari.nomUsuari}!</h2>
+    <c:if test="${isLoggedIn}">
+        <h2 class="welcome">Welcome, ${usuari.nomUsuari}!</h2>
+    </c:if>
     
     <div class="button-container">
-        <button type="button" id="loginB" class="btn btn-prymary Ibuttons" onclick="">Login</button>
+        <c:if test="${not isLoggedIn}">
+            <a href="Login" target="_blank">
+                <button type="button" id="loginB" class="btn btn-prymary Ibuttons">Login</button>
+            </a>
+        </c:if>
         <button type="button" id="filterB" class="btn btn-primary Ibuttons" onclick="mostrarFiltros()"><img src="${pageContext.request.contextPath}/resources/img/sliders-horizontal.svg" alt="alt" class=""/></button>
     </div>
     
@@ -142,6 +148,10 @@
         }
 
         return opcionesSeleccionadas.join(",");
+    }
+    
+    function redirectToLogin() {
+        window.location.href = 'Login';
     }
     </script>
 </body>
