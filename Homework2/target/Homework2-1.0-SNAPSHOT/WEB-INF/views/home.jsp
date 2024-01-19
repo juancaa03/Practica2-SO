@@ -149,7 +149,8 @@
     }
     
     function redirectToLogin() {
-        window.open('Login', '_blank');
+        //window.open('Login', '_blank');
+        window.location.href = 'Login';
     }
     </script>
 </body>
