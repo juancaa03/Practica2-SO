@@ -9,9 +9,14 @@ import deim.urv.cat.homework2.service.*;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
+import jakarta.mvc.UriRef;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 
 
@@ -27,7 +32,13 @@ public class MainController {
     private String userName;
             
     @GET
-    public String showMain() {
+    public String showMain(@QueryParam("Acción") String accion,
+    @QueryParam("Aventura") String aventura,
+    @QueryParam("Deporte") String deporte,
+    @QueryParam("Game Boy") String gameBoy,
+    @QueryParam("PC") String pc,
+    @QueryParam("PS5") String ps5) {    
+        
         List<Game> games = gameService.getAllGames();
         models.put("games", games);
         
@@ -38,6 +49,33 @@ public class MainController {
             models.put("usuari", usuari);
         }
         models.put("isLoggedIn", isLoggedIn);
+        
+        boolean filtered = accion != null || aventura != null || deporte != null || gameBoy != null || pc != null || ps5 != null;
+        System.out.println("AAAAA" +aventura+ " | " +deporte+ " | "+ps5);
+        if (filtered) {
+            List<Game> filteredGames = gameService.filtrarVideojuegos(accion, aventura, deporte, gameBoy, pc, ps5);
+            models.put("games", filteredGames);
+        }
+
+        models.put("filtered", filtered);
+        
         return "home.jsp";
+    }
+    
+    @POST
+    @UriRef("filterGames")
+    //@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public String filterGames(@FormParam("Acción") String accion,
+                              @FormParam("Aventura") String aventura,
+                              @FormParam("Deporte") String deporte,
+                              @FormParam("Game Boy") String gameBoy,
+                              @FormParam("PC") String pc,
+                              @FormParam("PS5") String ps5) {
+
+        
+        System.out.println("POSTTTT" +ps5);
+        //return "redirect:/Main?userName=" + userName;
+        return "redirect:/Main?accion=" + accion + "&aventura=" + aventura + "&deporte=" + deporte + "&GameBoy=" + gameBoy + "&PC=" + pc + "&PS5=" + ps5;
+
     }
 }
