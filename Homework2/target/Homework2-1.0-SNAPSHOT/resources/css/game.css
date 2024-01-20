@@ -12,13 +12,26 @@ body {
 #addtocart {
     color: black;
     background-color: greenyellow;
-    border-radius: 32px; 
+    border-radius: 16px;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    
 }
 
 h2 {
     color: greenyellow;
     font-weight: bold;
     font-size: 60px;
+    white-space: nowrap;
 }
 
 p {
@@ -26,7 +39,9 @@ p {
 }
 
 .container {
- margin-top: 150px;
- margin-left: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 

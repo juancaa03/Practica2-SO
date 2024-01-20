@@ -24,7 +24,7 @@
         <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <img src="${pageContext.request.contextPath}/resources/img/quake.jpg" alt="${game.nom}" class="gameImage">
+                <img src="${pageContext.request.contextPath}/resources/img/${game.nom}.jpg" alt="${game.nom}" class="gameImage">
             </div>
             <div class="col-md-6 letra">
                 <h2>${game.nom}</h2>
