@@ -54,10 +54,17 @@ public class MainController {
                           @FormParam("PS5") String ps5) {
 
         List<Game> filteredGames = gameService.filtrarVideojuegos(accion, aventura, deporte, gameBoy, pc, ps5);
-        System.out.println("ACCIONNNN ("+accion+")");
+        
         models.put("games", filteredGames);
-        // También puedes mantener la lógica para el usuario actual aquí si es necesario.
-
+        
+        boolean isLoggedIn = userName != null && !userName.isEmpty();
+        
+        if(isLoggedIn) {
+            User usuari = userService.findUserByNameInList(userName);
+            models.put("usuari", usuari);
+        }
+        models.put("isLoggedIn", isLoggedIn);
+        
         return "home.jsp";
     }
 }
