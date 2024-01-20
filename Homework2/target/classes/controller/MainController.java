@@ -46,17 +46,16 @@ public class MainController {
     
     @POST
     @UriRef("filterGames")
-    public String filterGames(@FormParam("Acción") String accion,
+    public String filterGames(@FormParam("Accion") String accion,
                           @FormParam("Aventura") String aventura,
                           @FormParam("Deporte") String deporte,
-                          @FormParam("Game Boy") String gameBoy,
+                          @FormParam("GameBoy") String gameBoy,
                           @FormParam("PC") String pc,
                           @FormParam("PS5") String ps5) {
 
         List<Game> filteredGames = gameService.filtrarVideojuegos(accion, aventura, deporte, gameBoy, pc, ps5);
-        System.out.println("PS55555 ("+ps5+")");
+        System.out.println("ACCIONNNN ("+accion+")");
         models.put("games", filteredGames);
-        System.out.println("GAMES" +filteredGames);
         // También puedes mantener la lógica para el usuario actual aquí si es necesario.
 
         return "home.jsp";

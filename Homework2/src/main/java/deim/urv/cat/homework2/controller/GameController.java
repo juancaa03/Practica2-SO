@@ -32,5 +32,6 @@ public class GameController {
     public void showGameDetail() {
         Game game = gameService.getGameById(gameId);
         models.put("game", game);
+        System.out.println("DATOS VIDEOJUEGO: nom: "+game.getNom()+" tipus: "+game.getTipus()+" desc: "+game.getDescripcio());
     }
 }

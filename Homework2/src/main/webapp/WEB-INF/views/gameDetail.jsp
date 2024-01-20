@@ -29,10 +29,12 @@
             <div class="col-md-6">
                 <h2>${game.nom}</h2>
                 <p>Precio: ${game.preuLloguer}€</p>
+                <p>Tipo: ${game.tipus}</p>
                 <p>Descripción: ${game.descripcio}</p>
                 <p>${game.disponibilitat ? 'Disponible' : 'No disponible'}</p>
                 <p>Tipo de videoconsola: ${game.videoconsola}</p>
-
+                <p>Adreça botigues: ${game.adrecaBotigues}</p>
+                
                 <form action="addToCart" method="post">
                     <input type="hidden" name="gameId" value="${game.id}">
                     <button type="submit">ADD TO CART</button>

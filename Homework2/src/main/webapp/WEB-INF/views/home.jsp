@@ -42,8 +42,8 @@
                 <div class="filter-menu">
                     <label>Type</label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="Accion" value="Acción">
-                        <input type="hidden" id="AccionHidden" name="Acción" />
+                        <input class="form-check-input" type="checkbox" id="Accion" value="Accion">
+                        <input type="hidden" id="AccionHidden" name="Accion" />
                         <label class="form-check-label" for="Acción">Action</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -63,9 +63,9 @@
                 <div class="filter-menu">
                     <label>Console</label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="Game Boy" value="Game Boy">
-                        <input type="hidden" id="Game BoyHidden" name="Game Boy" />
-                        <label class="form-check-label" for="Game Boy">Game Boy</label>
+                        <input class="form-check-input" type="checkbox" id="GameBoy" value="GameBoy">
+                        <input type="hidden" id="GameBoyHidden" name="GameBoy" />
+                        <label class="form-check-label" for="GameBoy">Game Boy</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="PC" value="PC">
@@ -124,7 +124,8 @@
         var hiddenInput = document.getElementById(hiddenId);
 
         // Actualizar el valor del campo oculto basado en el estado del checkbox
-        hiddenInput.value = checkbox.checked ? checkbox.value : '';
+        hiddenInput.value = checkbox.checked ? checkbox.value.trim() : '';
+        console.log("INPUTS:: "+hiddenInput.value + "  CHECKED: "+checkbox.checked);
     }
 
     // Obtener todos los checkboxes en el formulario
