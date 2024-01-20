@@ -43,17 +43,17 @@
                     <label>Type</label>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="Accion" value="Acción">
-                        <input type="hidden" id="accionHidden" name="Acción" />
+                        <input type="hidden" id="AccionHidden" name="Acción" />
                         <label class="form-check-label" for="Acción">Action</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="Aventura" value="Aventura">
-                        <input type="hidden" id="aventuraHidden" name="Aventura" />
+                        <input type="hidden" id="AventuraHidden" name="Aventura" />
                         <label class="form-check-label" for="Aventura">Adventure</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="Deporte" value="Deporte">
-                        <input type="hidden" id="deporteHidden" name="Deporte" />
+                        <input type="hidden" id="DeporteHidden" name="Deporte" />
                         <label class="form-check-label" for="Deporte">Sport</label>
                     </div>
                 </div>
@@ -64,17 +64,17 @@
                     <label>Console</label>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="Game Boy" value="Game Boy">
-                        <input type="hidden" id="gameBoyHidden" name="Game Boy" />
+                        <input type="hidden" id="Game BoyHidden" name="Game Boy" />
                         <label class="form-check-label" for="Game Boy">Game Boy</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="PC" value="PC">
-                        <input type="hidden" id="pcHidden" name="PC" />
+                        <input type="hidden" id="PCHidden" name="PC" />
                         <label class="form-check-label" for="PC">PC</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="PS5" value="PS5">
-                        <input type="hidden" id="ps5Hidden" name="PS5" />
+                        <input type="hidden" id="PS5Hidden" name="PS5" />
                         <label class="form-check-label" for="PS5">PS5</label>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
         // Obtener el id del checkbox y del campo oculto
         var checkboxId = checkbox.id;
         var hiddenId = checkboxId + 'Hidden';
-
+        console.log("ID::"+checkboxId + "|| HIDDEN "+hiddenId);
         // Añadir un listener al cambio de estado del checkbox
         checkbox.addEventListener('change', function() {
             actualizarCampoOculto(checkboxId, hiddenId);
