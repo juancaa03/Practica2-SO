@@ -8,3 +8,25 @@ body {
     color: #fff;
     background-color: #17202D;
 }
+
+#addtocart {
+    color: black;
+    background-color: greenyellow;
+    border-radius: 32px; 
+}
+
+h2 {
+    color: greenyellow;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.container {
+ margin-top: 150px;
+ margin-left: 200px;
+}
+

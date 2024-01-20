@@ -12,6 +12,9 @@ body {
 #first-title {
     text-align: center;
     padding: 1em;
+    font-size: 75px;
+    color: greenyellow;
+    font-weight: bold;
 }
 
 .welcome {
@@ -103,23 +106,23 @@ hr {
 }
 
 #filterB {
-    background-color: #1DA1F3;
+    background-color: green;
     margin-left: auto;
     margin-right: 140px;
 }
 
 #filterB:hover {
-    background-color: #025da2;
+    background-color: yellowgreen;
 }
 
 #loginB {
-    background-color: #FBC452;
+    background-color: green;
     margin-right: auto;
     margin-left: 140px;
     padding: 8px 19px 8px 19px;
 }
 
 #loginB:hover {
-    background-color: #fcdc8b;
-    color: #17202D;
+    background-color: yellowgreen;
+    color: white;
 }

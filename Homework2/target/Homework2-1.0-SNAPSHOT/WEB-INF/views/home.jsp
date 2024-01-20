@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>GameShop</title>
+<title>GAME SHOP</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css" />
 <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-    <h1 id="first-title">GameShop</h1>
+    <h1 id="first-title">GAME SHOP</h1>
     
     <c:if test="${isLoggedIn}">
         <h2 class="welcome">Welcome, ${usuari.nomUsuari}!</h2>

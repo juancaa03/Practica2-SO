@@ -26,8 +26,9 @@
             <div class="col-md-6">
                 <img src="${pageContext.request.contextPath}/resources/img/quake.jpg" alt="${game.nom}" class="gameImage">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 letra">
                 <h2>${game.nom}</h2>
+                <hr>
                 <p>Precio: ${game.preuLloguer}€</p>
                 <p>Tipo: ${game.tipus}</p>
                 <p>Descripción: ${game.descripcio}</p>
@@ -37,7 +38,7 @@
                 
                 <form action="addToCart" method="post">
                     <input type="hidden" name="gameId" value="${game.id}">
-                    <button type="submit">ADD TO CART</button>
+                    <button id="addtocart" type="submit">ADD TO CART</button>
                 </form>
             </div>
         </div>
