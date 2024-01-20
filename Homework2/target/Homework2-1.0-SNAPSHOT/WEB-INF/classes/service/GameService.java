@@ -12,6 +12,7 @@ import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -42,6 +43,50 @@ public class GameService {
     }
     return Collections.emptyList();
     }
+    
+    public List<Game> filtrarVideojuegos(String accion, String aventura, String deporte, String gameBoy, String pc, String ps5) {
+        
+        List<Game> games = getAllGames();  // Deberías tener un método que obtenga todos los juegos
+        List<Game> gamesFiltrados = new ArrayList<>();
+        
+        // Si no hay filtros, devolver la lista completa de juegos
+        if (accion == null && aventura == null && deporte == null && gameBoy == null && pc == null && ps5 == null) {
+            return games;
+        }
+        
+        for(Game game : games){
+            
+            boolean tipoCoincide = (accion != null && accion.equals(game.getTipus())) ||
+                               (aventura != null && aventura.equals(game.getTipus())) ||
+                               (deporte != null && deporte.equals(game.getTipus()));
+
+            // Verificar si la consola del juego coincide con alguno de los filtros seleccionados
+            boolean consolaCoincide = (gameBoy != null && gameBoy.equals(game.getVideoconsola())) ||
+                                  (pc != null && pc.equals(game.getVideoconsola())) ||
+                                  (ps5 != null && ps5.equals(game.getVideoconsola()));
+
+            // Si coincide con los criterios de filtro, agregarlo a la lista de juegos filtrados
+            if (tipoCoincide || consolaCoincide) {
+                gamesFiltrados.add(game);
+            }
+            //if ((accion != null && accion.equals(game.getTipus())) ||
+            //(aventura != null && aventura.equals(game.getTipus())) ||
+            //(deporte != null && deporte.equals(game.getTipus()))) {
+            
+            // Verificar si la consola del juego coincide con alguno de los filtros seleccionados
+            //if ((gameBoy != null && gameBoy.equals(game.getVideoconsola())) ||
+            //    (pc != null && pc.equals(game.getVideoconsola())) ||
+            //    (ps5 != null && ps5.equals(game.getVideoconsola()))) {
+                
+                // Si coincide con los criterios de filtro, agregarlo a la lista de juegos filtrados
+            //    gamesFiltrados.add(game);
+            //}
+        }
+        
+        
+        return gamesFiltrados;
+    }
+
     
     public Game getGameById(Long id) {
     // Obtener la lista completa de games

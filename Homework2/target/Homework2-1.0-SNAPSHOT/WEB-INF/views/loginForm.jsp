@@ -6,6 +6,7 @@
     <head>
         <title>Login page</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/loginForm.css" />
         <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -19,16 +20,18 @@
           crossorigin="anonymous"/>
     </head>
     <body>
-        <h1>LOGIN</h1>
+        <div class="container">
+            
         
-        <form action="${mvc.uri('authenticate')}" method="POST">
-            <label for="userName">Username:</label>
-            <input type="text" id="userName" name="userName" required>
+            <form action="${mvc.uri('authenticate')}" method="POST">
+                <h1>Login with your Account</h1>
+                
+                <input type="text" id="userName" name="userName" placeholder="Enter your username" required>
         
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
         
-            <button type="submit">Login</button>
-        </form>
+                <button type="submit">LOGIN NOW</button>
+            </form>
+        </div>
     </body>
 </html>

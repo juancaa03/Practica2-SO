@@ -9,7 +9,10 @@ import deim.urv.cat.homework2.service.*;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
+import jakarta.mvc.UriRef;
+import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.QueryParam;
 import java.util.List;
@@ -38,6 +41,24 @@ public class MainController {
             models.put("usuari", usuari);
         }
         models.put("isLoggedIn", isLoggedIn);
+        return "home.jsp";
+    }
+    
+    @POST
+    @UriRef("filterGames")
+    public String filterGames(@FormParam("Acción") String accion,
+                          @FormParam("Aventura") String aventura,
+                          @FormParam("Deporte") String deporte,
+                          @FormParam("Game Boy") String gameBoy,
+                          @FormParam("PC") String pc,
+                          @FormParam("PS5") String ps5) {
+
+        List<Game> filteredGames = gameService.filtrarVideojuegos(accion, aventura, deporte, gameBoy, pc, ps5);
+        System.out.println("PS55555 ("+ps5+")");
+        models.put("games", filteredGames);
+        System.out.println("GAMES" +filteredGames);
+        // También puedes mantener la lógica para el usuario actual aquí si es necesario.
+
         return "home.jsp";
     }
 }
