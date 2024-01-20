@@ -92,7 +92,7 @@
                 <div class="col-md-4">
                     <a href="gameDetail?id=${videojuego.id}" target="_blank">
                         <div class="card">
-                            <img src="${pageContext.request.contextPath}/resources/img/quake.jpg" alt="Quake" class="gameImage">
+                            <img src="${pageContext.request.contextPath}/resources/img/${videojuego.nom}.jpg" alt="Juegos" class="gameImage">
                             <hr>
                             <h3>${videojuego.nom}</h3>
                             <p>${videojuego.preuLloguer}€</p>
