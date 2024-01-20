@@ -36,22 +36,22 @@
         <button type="button" id="filterB" class="btn btn-primary Ibuttons" onclick="mostrarFiltros()"><img src="${pageContext.request.contextPath}/resources/img/sliders-horizontal.svg" alt="alt" class=""/></button>
     </div>
     
-    <form id="filtro-form">
+    <form id="filtro-form" action="${uriRef.filterGames}" method="post">
         <div class="row">
             <div class="col-md-3">
                 <div class="filter-menu">
                     <label>Type</label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="accion" value="accion">
-                        <label class="form-check-label" for="accion">Action</label>
+                        <input class="form-check-input" type="checkbox" id="Accion" value="Acción">
+                        <label class="form-check-label" for="Acción">Action</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="aventura" value="aventura">
-                        <label class="form-check-label" for="aventura">Adventure</label>
+                        <input class="form-check-input" type="checkbox" id="Aventura" value="Aventura">
+                        <label class="form-check-label" for="Aventura">Adventure</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="estrategia" value="estrategia">
-                        <label class="form-check-label" for="estrategia">Strategy</label>
+                        <input class="form-check-input" type="checkbox" id="Deporte" value="Deporte">
+                        <label class="form-check-label" for="Deporte">Sport</label>
                     </div>
                 </div>
             </div>
@@ -60,41 +60,31 @@
                 <div class="filter-menu">
                     <label>Console</label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="nintendo" value="nintendo">
-                        <label class="form-check-label" for="nintendo">Nintendo</label>
+                        <input class="form-check-input" type="checkbox" id="Game Boy" value="Game Boy">
+                        <label class="form-check-label" for="Game Boy">Game Boy</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="playstation" value="playstation">
-                        <label class="form-check-label" for="playstation">PlayStation</label>
+                        <input class="form-check-input" type="checkbox" id="PC" value="PC">
+                        <label class="form-check-label" for="PC">PC</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="xbox" value="xbox">
-                        <label class="form-check-label" for="xbox">Xbox</label>
+                        <input class="form-check-input" type="checkbox" id="PS5" value="PS5">
+                        <label class="form-check-label" for="PS5">PS5</label>
                     </div>
                 </div>
             </div>
-            
-            <div class="col-md-3">
-                <div class="filter-menu">
-                    <label>Price</label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="minPrice" value="minPrice">
-                        <label class="form-check-label" for="minPrice">0 - 15€</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="midPrice" value="midPrice">
-                        <label class="form-check-label" for="midPrice">15€ - 40€</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="maxPrice" value="maxPrice">
-                        <label class="form-check-label" for="maxPrice">+ 40€</label>
-                    </div>
-                </div>
-            </div>
+           
         </div>
-
-        <button type="button" id="aplyFilter" class="btn btn-primary Ibuttons" onclick="aplicarFiltro()">Aply</button>
+        <input type="hidden" id="accionHidden" name="Acción" />
+        <input type="hidden" id="aventuraHidden" name="Aventura" />
+        <input type="hidden" id="deporteHidden" name="Deporte" />
+        <input type="hidden" id="gameBoyHidden" name="Game Boy" />
+        <input type="hidden" id="pcHidden" name="PC" />
+        <input type="hidden" id="ps5Hidden" name="PS5" />
+    
+        <button type="submit" id="aplyFilter" class="btn btn-primary Ibuttons">Aply</button>
     </form>
+
     
     <div class="container custom-container">
         <div class="row">
@@ -125,27 +115,7 @@
     }
     
         function aplicarFiltro() {
-        var tipoVideojuego = obtenerSeleccionados("tipoVideojuego");
-        var videoconsola = obtenerSeleccionados("videoconsola");
-
-        //Codigo para poder aplicar el filtro
-
-        // Ejemplo de cómo podrías mostrar los valores seleccionados en la consola
-        console.log("Tipo de Videojuego seleccionado: " + tipoVideojuego);
-        console.log("Videoconsola seleccionada: " + videoconsola);
-    }
-
-    function obtenerSeleccionados(name) {
-        var checkboxes = document.getElementsByName(name);
-        var opcionesSeleccionadas = [];
-
-        for (var i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].checked) {
-                opcionesSeleccionadas.push(checkboxes[i].value);
-            }
-        }
-
-        return opcionesSeleccionadas.join(",");
+        
     }
     
     function redirectToLogin() {
