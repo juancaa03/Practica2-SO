@@ -12,22 +12,34 @@ public class Rental {
     
     private Date dataInici;
     private Date dataFi;
+    private double totalPrice;
     private Game videojoc;
     private User usuari;
 
     public Rental() {
     }
 
-    public Rental(Date dataInici, Date dataFi, Game videojoc, User usuari) {
+    public Rental(Long id, Date dataInici, Date dataFi, double totalPrice, Game videojoc, User usuari) {
+        this.id = id;
+        this.dataInici = dataInici;
+        this.dataFi = dataFi;
+        this.totalPrice = totalPrice;
+        this.videojoc = videojoc;
+        this.usuari = usuari;
+    }
+    
+    public Rental(Date dataInici, Date dataFi, Game videojoc, User usuari, double totalPrice) {
         this.dataInici = dataInici;
         this.dataFi = dataFi;
         this.videojoc = videojoc;
         this.usuari = usuari;
+        this.totalPrice = totalPrice;
     }
 
-    public Rental(Date dataInici, Date dataFi) {
+    public Rental(Date dataInici, Date dataFi, double totalPrice) {
         this.dataInici = dataInici;
         this.dataFi = dataFi;
+        this.totalPrice = totalPrice;
     }
 
     public Long getId() {
@@ -68,6 +80,14 @@ public class Rental {
 
     public void setUsuari(User usuari) {
         this.usuari = usuari;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
     
     
