@@ -9,7 +9,6 @@ deim\urv\cat\homework2\PropertyProducer.class
 deim\urv\cat\homework2\MvcEventListener.class
 deim\urv\cat\homework2\model\User.class
 deim\urv\cat\homework2\controller\SignUpFormController.class
-deim\urv\cat\homework2\controller\ErrorController.class
 deim\urv\cat\homework2\Property.class
 deim\urv\cat\homework2\model\LloguerRequest.class
 deim\urv\cat\homework2\controller\LogoutController.class

@@ -56,7 +56,7 @@ public class RentController {
             
             if(!game.isDisponibilitat()) {
                 models.put("error", "The game is not avaliable");
-                return "redirect:/Error";
+                return "errorPage.jsp";
             }
         
             // Lógica para realizar la renta del juego
@@ -79,19 +79,18 @@ public class RentController {
             // Verificar si la renta fue exitosa (puedes ajustar esto según la estructura de tu respuesta)
             if (response != null) {
                
-                //Poner los detalles de la renta en el modelo
+                game.setDisponibilitat(false);
                 models.put("rebutLloguer", response);
                 //models.put("buyConfirmed", true);
                 //return "redirect:/Rent";
                 return "receipt.jsp";
             } else {
                 models.put("error", "Error al realizar la renta.");
-                return "redirect:/Error";
+                return "errorPage.jsp";
             }
         } catch (Exception e){
-            e.printStackTrace();
             models.put("error", "Se ha producido un error inesperado.");
-            return "redirect:/Error";
+            return "errorPage.jsp";
         }
     }
 }

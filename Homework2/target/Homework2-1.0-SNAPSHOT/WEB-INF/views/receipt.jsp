@@ -11,5 +11,7 @@
             <p>Fecha de Inicio: ${rebutLloguer.dataAlquiler}</p>
             <p>Fecha de Fin: ${rebutLloguer.dataRetorn}</p>
             <p>Precio Total: ${rebutLloguer.preuTotal}</p>
+            
+            <a href="Main" target="_blank">Return to Store</a>
     </body>
 </html>

@@ -114,16 +114,4 @@ public class GameService {
             client.close();
         }
     }
-    
-    /*public void addToCart(Game game) {
-        shoppingCartItem = game;
-    }
-
-    public Game getShoppingCartItem() {
-        return shoppingCartItem;
-    }
-
-    public void clearShoppingCart() {
-        shoppingCartItem = null;
-    }*/
 }
