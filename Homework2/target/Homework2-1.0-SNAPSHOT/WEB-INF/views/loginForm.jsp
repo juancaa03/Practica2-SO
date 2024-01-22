@@ -21,7 +21,7 @@
     </head>
     <body>
         <div class="container">
-            
+            <p>${error}</p>
         
             <form action="${mvc.uri('authenticate')}" method="POST">
                 <h1>Login with your Account</h1>

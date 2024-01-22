@@ -23,7 +23,7 @@
 </head>
 <body>
     <div class="container d-flex align-items-center justify-content-center">
-        <h1>Error!!</h1>
+        <h1>Error!</h1>
         <p>${error}</p>
     </div>
 </body>

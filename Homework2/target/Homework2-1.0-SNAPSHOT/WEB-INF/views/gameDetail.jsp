@@ -35,13 +35,18 @@
                         </form>
                     </div>
                 </c:if>
+        
         <div class="container">
+            
         <div class="row">
             
             <div class="col-md-6">
                 <img src="${pageContext.request.contextPath}/resources/img/${game.nom}.jpg" alt="${game.nom}" class="gameImage">
             </div>
             <div class="col-md-6 letra">
+                <c:if test="${isLoggedIn}">
+                    <p id="hi">Hi, ${userName}!</p>
+                </c:if>
                 <h2>${game.nom}</h2>
                 <hr>
                 <p>Precio: ${game.preuLloguer}€</p>
@@ -50,7 +55,6 @@
                 <p>${game.disponibilitat ? 'Disponible' : 'No disponible'}</p>
                 <p>Tipo de videoconsola: ${game.videoconsola}</p>
                 <p>Adreça botigues: ${game.adrecaBotigues}</p>
-                <p>UserName: ${userName}</p>
                 
                 <form action="${mvc.uri('addToCart')}" method="post">
                     <input type="hidden" name="gameId" value="${game.id}">

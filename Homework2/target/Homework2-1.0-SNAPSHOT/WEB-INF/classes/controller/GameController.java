@@ -46,16 +46,20 @@ public class GameController {
         Game game = gameService.getGameById(gameId);
         models.put("game", game);
         models.put("addedToCart", addedToCart);
-        models.put("userName", userName);
         
-        //System.out.println("DATOS VIDEOJUEGO: nom: "+game.getNom()+" tipus: "+game.getTipus()+" desc: "+game.getDescripcio());
+        boolean isLoggedIn = userName != null && !userName.isEmpty();
+        if(isLoggedIn) {
+            models.put("userName", userName);
+        }
+        
+        models.put("isLoggedIn", isLoggedIn);
+        
     }
     
     @POST
     @UriRef("addToCart")
     public String addToCart(@FormParam("gameId") Long gameId, @FormParam("userName") String userName) {
-        System.out.println("GAMEID|ADDTOCART: " + gameId);
-        System.out.println("USERNAMEADDTOCART111: "+ userName);
+        
         
         if (userName == null || userName.isEmpty()) {
             // Si el usuario no ha iniciado sesión, redirigir a la página de inicio de sesión con información adicional
@@ -63,7 +67,6 @@ public class GameController {
             return "redirect:/Login?gameId=" + gameId;
         } else {
             
-            System.out.println("USERNAMEADDTOCART2222: "+ userName);
             return "redirect:/gameDetail?id=" + gameId + "&addedToCart=true&userName="+userName;
         }
         //return "redirect:/gameDetail?id=" + gameId + "&addedToCart=true";//&userName=" + userName

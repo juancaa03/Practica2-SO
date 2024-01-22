@@ -17,6 +17,11 @@ body {
     text-align: center;
 }
 
+p {
+    color: red;
+    margin-bottom: 30px;
+}
+
 form {
     background-color: #2A3B47;
     padding: 50px;
