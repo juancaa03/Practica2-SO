@@ -24,6 +24,8 @@ public class GameService {
     private final jakarta.ws.rs.client.Client client;
     private static final String BASE_URI = "http://localhost:8080/Homework1/webresources/rest/api/v1";
     
+    //private Game shoppingCartItem;
+    
     public GameService() {
         client = jakarta.ws.rs.client.ClientBuilder.newClient();
         webTarget = client.target(BASE_URI).path("videojoc");
@@ -112,4 +114,16 @@ public class GameService {
             client.close();
         }
     }
+    
+    /*public void addToCart(Game game) {
+        shoppingCartItem = game;
+    }
+
+    public Game getShoppingCartItem() {
+        return shoppingCartItem;
+    }
+
+    public void clearShoppingCart() {
+        shoppingCartItem = null;
+    }*/
 }

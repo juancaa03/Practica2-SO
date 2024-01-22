@@ -4,7 +4,9 @@
  */
 package deim.urv.cat.homework2.controller;
 
+import deim.urv.cat.homework2.model.Game;
 import deim.urv.cat.homework2.model.User;
+import deim.urv.cat.homework2.service.GameService;
 import deim.urv.cat.homework2.service.UserService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -13,12 +15,15 @@ import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
 import jakarta.mvc.UriRef;
 import jakarta.mvc.View;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 import java.net.URI;
 
@@ -33,7 +38,18 @@ public class LoginController {
     private UserService userService;
     @Inject
     private Models models;
-    @Inject UserForm userForm;
+    
+    @Inject
+    UserForm userForm;
+    
+    @Inject
+    GameService gameService;
+    
+    @QueryParam("gameId")
+    Long gameId;
+    
+    @Context
+    private HttpServletRequest httpRequest;
 
     // Otros métodos y lógica de autenticación...
     // LoginController.java
@@ -43,12 +59,13 @@ public class LoginController {
     @GET
     @View("loginForm.jsp")
     public void showLogin() {
-        
+        Game game = gameService.getGameById(gameId);
+        models.put("game", game);
     }
     
     @POST
     @UriRef("authenticate")
-    public String authenticate(@Valid @BeanParam UserForm userForm) {
+    public String authenticate(@Valid @BeanParam UserForm userForm, @FormParam("gameId") Long gameId) {
         if (!userForm.isValid()) {
             // Si el formulario no es válido, vuelve a la página de inicio de sesión con un mensaje de error
             models.put("error", "Invalid form data");
@@ -63,7 +80,21 @@ public class LoginController {
             //return Response.seeOther(URI.create("/Main?userName=" + userForm.getUserName())).build();
             //URI location = UriInfo.getBaseUriBuilder().path("/Main").queryParam("userName", userForm.getUserName()).build();
             //return Response.seeOther(location).build();
-            return "redirect:/Main?userName=" + userForm.getUserName();
+            //return "redirect:/Main?userName=" + userForm.getUserName();
+            String userName = userForm.getUserName();
+            System.out.println("USERNAMEONLOGIN111: "+userName);
+            System.out.println("GAMEID|ONLOGIN111: "+gameId);
+            models.put("userName", userName);
+            System.out.println("USERNAMEONLOGIN222: "+userName);
+            System.out.println("GAMEID|ONLOGIN222: "+gameId);
+            // Determinar si el usuario proviene de gameDetail
+            if (gameId != null) {
+                // Redirigir al usuario de vuelta a gameDetail
+                return "redirect:/gameDetail?id=" + gameId+ "&userName=" + userName;
+            } else {
+                // Redirigir al usuario al Main
+                return "redirect:/Main?userName=" + userName;
+            }
         } else {
             // Autenticación fallida, vuelve a la página de inicio de sesión con un mensaje de error
             models.put("error", "Invalid username or password");
@@ -71,6 +102,11 @@ public class LoginController {
         }
     }
     
+    private boolean userCameFromGameDetail() {
+        // Verificar si la URL de referencia contiene "gameDetail"
+        String referer = httpRequest.getHeader("Referer");
+        return referer != null && referer.contains("/gameDetail");
+    }
     /*@POST
     public String login(@FormParam("loginButton") String loginButton) {
         if("Login".equals(loginButton)) {

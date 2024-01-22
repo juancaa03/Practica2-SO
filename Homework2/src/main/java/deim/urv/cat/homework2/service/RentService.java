@@ -5,6 +5,7 @@
 package deim.urv.cat.homework2.service;
 
 import deim.urv.cat.homework2.controller.UserForm;
+import deim.urv.cat.homework2.model.LloguerRequest;
 import deim.urv.cat.homework2.model.Rental;
 import deim.urv.cat.homework2.model.User;
 import jakarta.ws.rs.client.Entity;
@@ -18,11 +19,11 @@ import java.util.List;
 public class RentService {
     private final WebTarget webTarget;
     private final jakarta.ws.rs.client.Client client;
-    private static final String BASE_URI = "http://localhost:8080/UserService/rest/api/v1/lloguer";
+    private static final String BASE_URI = "http://localhost:8080/Homework1/webresources/rest/api/v1";
     
     public RentService() {
         client = jakarta.ws.rs.client.ClientBuilder.newClient();
-        webTarget = client.target(BASE_URI).path("rent");
+        webTarget = client.target(BASE_URI).path("lloguer");
     }
     
     public Rental getRentById(Long id) {
@@ -54,6 +55,17 @@ public class RentService {
             client.close();
         }
         return null;
+    }
+    
+    public Response rentVideojocs(LloguerRequest lloguerRequest) {
+        try {
+            Response response = webTarget.request(MediaType.APPLICATION_JSON)
+                    .post(Entity.entity(lloguerRequest, MediaType.APPLICATION_JSON));
+
+            return response;
+        } finally {
+            client.close();
+        }
     }
     //public User findUserByEmail(String email){
     //    Response response = webTarget.path(email)

@@ -23,6 +23,17 @@
     <body>
         <div class="container">
         <div class="row">
+            <c:if test="${addedToCart}">
+                    <div>
+                        <h2>Your Shopping Cart</h2>
+                        <p>${game.nom} - ${game.preuLloguer}€</p>
+                    
+                        <form action="${mvc.uri("rent")}" method="post" target="_blank">
+                            <input type="hidden" name="gameId" value="${game.id}">
+                            <button type="submit">RENT ME</button>
+                        </form>
+                    </div>
+                </c:if>
             <div class="col-md-6">
                 <img src="${pageContext.request.contextPath}/resources/img/${game.nom}.jpg" alt="${game.nom}" class="gameImage">
             </div>
@@ -35,13 +46,18 @@
                 <p>${game.disponibilitat ? 'Disponible' : 'No disponible'}</p>
                 <p>Tipo de videoconsola: ${game.videoconsola}</p>
                 <p>Adreça botigues: ${game.adrecaBotigues}</p>
+                <p>UserName: ${userName}</p>
                 
-                <form action="addToCart" method="post">
+                <form action="${mvc.uri('addToCart')}" method="post">
                     <input type="hidden" name="gameId" value="${game.id}">
+                    <input type="hidden" name="userName" value="${userName}">
                     <button id="addtocart" type="submit">ADD TO CART</button>
                 </form>
+                
             </div>
         </div>
+        
     </div>
+        
     </body>
 </html>

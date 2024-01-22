@@ -90,7 +90,7 @@
         <div class="row">
             <c:forEach var="videojuego" items="${games}">
                 <div class="col-md-4">
-                    <a href="gameDetail?id=${videojuego.id}" target="_blank">
+                    <a href="gameDetail?id=${videojuego.id}&userName=${usuari.nomUsuari}" target="_blank">
                         <div class="card">
                             <img src="${pageContext.request.contextPath}/resources/img/${videojuego.nom}.jpg" alt="Juegos" class="gameImage">
                             <hr>

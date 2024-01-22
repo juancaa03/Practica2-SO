@@ -29,7 +29,7 @@
                 <input type="text" id="userName" name="userName" placeholder="Enter your username" required>
         
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
-        
+                <input type="hidden" name="gameId" value="${game.id}">
                 <button type="submit">LOGIN NOW</button>
             </form>
         </div>
