@@ -6,6 +6,7 @@ package deim.urv.cat.homework2.service;
 
 import deim.urv.cat.homework2.controller.UserForm;
 import deim.urv.cat.homework2.model.LloguerRequest;
+import deim.urv.cat.homework2.model.RebutLloguer;
 import deim.urv.cat.homework2.model.Rental;
 import deim.urv.cat.homework2.model.User;
 import jakarta.ws.rs.client.Entity;
@@ -57,12 +58,26 @@ public class RentService {
         return null;
     }
     
-    public Response rentVideojocs(LloguerRequest lloguerRequest) {
+    public RebutLloguer rentVideojocs(LloguerRequest lloguerRequest) {
         try {
             Response response = webTarget.request(MediaType.APPLICATION_JSON)
                     .post(Entity.entity(lloguerRequest, MediaType.APPLICATION_JSON));
 
-            return response;
+            if (response.getStatus() == Response.Status.CREATED.getStatusCode()) {
+                // Si la respuesta es exitosa (código 201 CREATED), lee y devuelve el cuerpo en formato JSON
+                return response.readEntity(RebutLloguer.class);
+            } else {
+                // Si la respuesta es diferente de 201, maneja el error según tus necesidades
+                // Puedes lanzar una excepción, loggear un mensaje, etc.
+                System.out.println("Error en la respuesta: " + response.getStatusInfo().getReasonPhrase());
+                System.out.println("Cuerpo de la respuesta: " + response.readEntity(String.class));
+                return null; // O lanza una excepción si prefieres
+            }
+        }catch (Exception e) {
+            // Manejar la excepción y devolver el código de error correspondiente
+            System.out.println("Error al procesar la solicitud: " + e.getMessage());
+            e.printStackTrace();
+            return null;
         } finally {
             client.close();
         }

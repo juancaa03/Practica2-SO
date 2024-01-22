@@ -4,27 +4,36 @@
  */
 package deim.urv.cat.homework2.model;
 
+import java.io.Serializable;
 
-public class LloguerRequest {
-    private Game game;
-    private User user;
 
-    public Game getGame() {
-        return game;
-    }
+public class LloguerRequest implements Serializable{
+    private Game videojoc;
+    private User usuari;
 
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public LloguerRequest() {
     }
 
     
+    public LloguerRequest(Game videojoc, User usuari) {
+        this.videojoc = videojoc;
+        this.usuari = usuari;
+    }
+
+    public Game getVideojoc() {
+        return videojoc;
+    }
+
+    public void setVideojoc(Game videojoc) {
+        this.videojoc = videojoc;
+    }
+
+    public User getUsuari() {
+        return usuari;
+    }
+
+    public void setUsuari(User usuari) {
+        this.usuari = usuari;
+    }
     
 }

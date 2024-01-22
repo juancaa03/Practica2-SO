@@ -52,35 +52,46 @@ public class RentController {
     @POST
     @UriRef("rent")
     public String rent(@FormParam("gameId") Long gameId, @FormParam("userName") String userName) {
-        Game game = gameService.getGameById(gameId);
+        try {
+            Game game = gameService.getGameById(gameId);
+            
+            if(!game.isDisponibilitat()) {
+                models.put("error", "The game is not avaliable");
+                return "redirect:/Error";
+            }
         
-        // Lógica para realizar la renta del juego
-        // Puedes agregar código aquí para gestionar la renta, por ejemplo, utilizando el servicio RentService
-        LloguerRequest lloguerRequest = new LloguerRequest();
-        //new Game(game.getId(), game.getNom(), game.getVideoconsola(), game.isDisponibilitat(), game.getPreuLloguer(), game.getDescripcio(), game.getTipus(), game.getAdrecaBotigues())
-        System.out.println("USERNAMEONRENT222: "+userName);
-        System.out.println("GAMEONRENT222: "+gameId);
-        User user = userService.findUserByNameInList(userName);
-        
-        lloguerRequest.setGame(game);
-        lloguerRequest.setUser(user);
-        
-        // Llamar al servicio RentService para realizar la renta
-        RentService rentService = new RentService();
-        Response response = rentService.rentVideojocs(lloguerRequest);
-        System.out.println("RESPONSEEE: "+response);
-        // Verificar si la renta fue exitosa (puedes ajustar esto según la estructura de tu respuesta)
-        if (response != null && response.getStatus() == Response.Status.CREATED.getStatusCode()) {
-            // Si la renta es exitosa, redirigir a la página de confirmación
-            RebutLloguer rebutLloguer = response.readEntity(RebutLloguer.class);
-
-            // Poner los detalles de la renta en el modelo
-            models.put("rebutLloguer", rebutLloguer);
-            models.put("buyConfirmed", true);
-            return "redirect:/rentConfirmation.jsp";
-        } else {
-            // Si hay algún problema, puedes redirigir a una página de error o manejarlo de alguna otra manera
-            return "redirect:/errorPage.jsp";
+            // Lógica para realizar la renta del juego
+            // Puedes agregar código aquí para gestionar la renta, por ejemplo, utilizando el servicio RentService
+            
+            //new Game(game.getId(), game.getNom(), game.getVideoconsola(), game.isDisponibilitat(), game.getPreuLloguer(), game.getDescripcio(), game.getTipus(), game.getAdrecaBotigues())
+            System.out.println("USERNAMEONRENT222: "+userName);
+            System.out.println("GAMEONRENT222: "+gameId);
+            User usuari = userService.findUserByNameInList(userName);
+            
+            LloguerRequest lloguerRequest = new LloguerRequest();
+            lloguerRequest.setVideojoc(game);
+            lloguerRequest.setUsuari(usuari);
+            System.out.println("USERRESPONSEEE: "+lloguerRequest.getUsuari());
+            System.out.println("GAMERESPONSEEE: "+lloguerRequest.getVideojoc());
+            // Llamar al servicio RentService para realizar la renta
+            RentService rentService = new RentService();
+            RebutLloguer response = rentService.rentVideojocs(lloguerRequest);
+            System.out.println("RESPONSEEE: "+response);
+            // Verificar si la renta fue exitosa (puedes ajustar esto según la estructura de tu respuesta)
+            if (response != null) {
+               
+                // Poner los detalles de la renta en el modelo
+                models.put("rebutLloguer", response);
+                models.put("buyConfirmed", true);
+                return "redirect:/Rent";
+            } else {
+                models.put("error", "Error al realizar la renta.");
+                return "redirect:/Error";
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+            models.put("error", "Se ha producido un error inesperado.");
+            return "redirect:/Error";
         }
     }
 }

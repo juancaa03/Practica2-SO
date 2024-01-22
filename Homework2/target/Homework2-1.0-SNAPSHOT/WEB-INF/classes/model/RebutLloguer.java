@@ -4,15 +4,19 @@
  */
 package deim.urv.cat.homework2.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 
-public class RebutLloguer {
+public class RebutLloguer implements Serializable{
     private Long id;
     
     private double preuTotal;
     private Date dataAlquiler;
     private Date dataRetorn;
+
+    public RebutLloguer() {
+    }
     
     public RebutLloguer(Long id, Date dataAlquiler, Date dataRetorn, double preuTotal) {
         this.id = id;
