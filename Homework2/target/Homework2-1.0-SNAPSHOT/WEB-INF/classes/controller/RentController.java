@@ -30,25 +30,36 @@ public class RentController {
     @Inject UserService userService;
     @Inject Models models;
     
-    @QueryParam("id")
+    /*@QueryParam("id")
     private Long gameId;
     
+    @QueryParam("userName")
+    private String userName;*/
+    
     @GET
-    public String showConfirmation() {
+    public String showConfirmation(@QueryParam("gameId") Long gameId, @QueryParam("userName") String userName) {
         Game game = gameService.getGameById(gameId);
+        models.put("game", game);
+        
+        models.put("userName", userName);
+        
+        models.put("buyConfirmed", false);
+        System.out.println("USERNAMEONRENT: "+userName);
+        System.out.println("GAMEONRENT: "+gameId);
         return "rentConfirmation.jsp";
     }
     
     @POST
     @UriRef("rent")
-    public String rent(@FormParam("gameId") Long gameId) {
+    public String rent(@FormParam("gameId") Long gameId, @FormParam("userName") String userName) {
         Game game = gameService.getGameById(gameId);
         
         // Lógica para realizar la renta del juego
         // Puedes agregar código aquí para gestionar la renta, por ejemplo, utilizando el servicio RentService
         LloguerRequest lloguerRequest = new LloguerRequest();
         //new Game(game.getId(), game.getNom(), game.getVideoconsola(), game.isDisponibilitat(), game.getPreuLloguer(), game.getDescripcio(), game.getTipus(), game.getAdrecaBotigues())
-        String userName = (String) models.get("userName");
+        System.out.println("USERNAMEONRENT222: "+userName);
+        System.out.println("GAMEONRENT222: "+gameId);
         User user = userService.findUserByNameInList(userName);
         
         lloguerRequest.setGame(game);
@@ -65,7 +76,7 @@ public class RentController {
 
             // Poner los detalles de la renta en el modelo
             models.put("rebutLloguer", rebutLloguer);
-            
+            models.put("buyConfirmed", true);
             return "redirect:/rentConfirmation.jsp";
         } else {
             // Si hay algún problema, puedes redirigir a una página de error o manejarlo de alguna otra manera

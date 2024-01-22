@@ -25,11 +25,13 @@
         <div class="row">
             <c:if test="${addedToCart}">
                     <div>
-                        <h2>Your Shopping Cart</h2>
+                        <h2>Your Shopping Cart - ${userName}</h2>
+                        
                         <p>${game.nom} - ${game.preuLloguer}€</p>
                     
-                        <form action="${mvc.uri("rent")}" method="post" target="_blank">
+                        <form action="Rent" method="get" target="_blank">
                             <input type="hidden" name="gameId" value="${game.id}">
+                            <input type="hidden" name="userName" value="${userName}">
                             <button type="submit">RENT ME</button>
                         </form>
                     </div>

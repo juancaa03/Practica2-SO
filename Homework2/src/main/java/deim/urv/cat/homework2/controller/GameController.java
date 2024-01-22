@@ -16,6 +16,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.Response;
 
 @Controller
 @Path("gameDetail")
@@ -54,15 +55,16 @@ public class GameController {
     @UriRef("addToCart")
     public String addToCart(@FormParam("gameId") Long gameId, @FormParam("userName") String userName) {
         System.out.println("GAMEID|ADDTOCART: " + gameId);
-        System.out.println("USERNAMEADDTOCART!: "+ userName);
+        System.out.println("USERNAMEADDTOCART111: "+ userName);
+        
         if (userName == null || userName.isEmpty()) {
             // Si el usuario no ha iniciado sesión, redirigir a la página de inicio de sesión con información adicional
             
             return "redirect:/Login?gameId=" + gameId;
         } else {
-            // Usuario ya ha iniciado sesión, realizar la lógica de agregar al carrito
-            // Puedes agregar aquí tu lógica actual para agregar al carrito
-            return "redirect:/gameDetail?id=" + gameId + "&addedToCart=true";
+            
+            System.out.println("USERNAMEADDTOCART2222: "+ userName);
+            return "redirect:/gameDetail?id=" + gameId + "&addedToCart=true&userName="+userName;
         }
         //return "redirect:/gameDetail?id=" + gameId + "&addedToCart=true";//&userName=" + userName
     }
