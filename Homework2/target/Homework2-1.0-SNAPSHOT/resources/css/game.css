@@ -4,7 +4,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Black Ops One', sans-serif;
     color: #fff;
     background-color: #17202D;
 }
@@ -16,6 +16,40 @@ body {
     margin-top: 20px;
     padding: 10px;
     font-size: 15px;
+    font-weight: bold;
+    border-color: whitesmoke;
+}
+
+.cart form button {
+    color: black;
+    background-color: greenyellow;
+    border-radius: 16px;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    border-color: whitesmoke;
+}
+
+.cart {
+    background-color: #2A3B47;
+    border-radius: 8px;
+    text-align: center;
+    padding: 30px;
+    border-bottom: 3px solid whitesmoke;
+}
+
+.cart h2 {
+    font-size: 40px;
+}
+
+.cart hr {
+    width: 430px;
+}
+
+.cart p {
+    margin-top: 20px;
+    font-size: 20px;
     font-weight: bold;
 }
 

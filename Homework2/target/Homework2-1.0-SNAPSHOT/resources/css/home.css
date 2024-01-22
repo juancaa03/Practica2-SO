@@ -4,12 +4,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Black Ops One', sans-serif;
     color: #fff;
     background-color: #17202D;
 }
-        
+
 #first-title {
+    font-family: 'Anton', sans-serif;
     text-align: center;
     padding: 63px;
     font-size: 75px;
@@ -118,6 +119,7 @@ hr {
     background-color: green;
     margin-left: auto;
     margin-right: 140px;
+    border-color: whitesmoke;
 }
 
 #filterB:hover {
@@ -129,6 +131,7 @@ hr {
     margin-right: auto;
     margin-left: 140px;
     padding: 8px 19px 8px 19px;
+    border-color: whitesmoke;
 }
 
 #loginB:hover {

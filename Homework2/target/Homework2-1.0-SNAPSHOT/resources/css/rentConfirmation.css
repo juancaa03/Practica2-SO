@@ -1,0 +1,46 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+body {
+    font-family: 'Black Ops One', sans-serif;
+    background-color: #f8f9fa; /* Fondo */
+    color: #495057; /* Texto */
+    text-align: center;
+}
+
+.container {
+    margin-top: 200px;
+}
+
+h1 {
+    color: #007bff; /* Azul */
+    font-size: 50px;
+    margin: 30px;
+    margin-top: 35px;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+button {
+    background-color: #28a745; /* Verde */
+    color: #fff; /* Texto blanco */
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838; /* Verde oscuro al pasar el ratón */
+}
+
+a {
+    color: #007bff; /* Azul */
+    margin-top: 20px;
+    display: block;
+}
+
+

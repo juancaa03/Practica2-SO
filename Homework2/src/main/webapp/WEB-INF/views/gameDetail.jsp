@@ -8,6 +8,7 @@
         <title>${game.nom}</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/game.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap">
         <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -21,12 +22,10 @@
           crossorigin="anonymous"/>
     </head>
     <body>
-        <div class="container">
-        <div class="row">
-            <c:if test="${addedToCart}">
-                    <div>
-                        <h2>Your Shopping Cart - ${userName}</h2>
-                        
+        <c:if test="${addedToCart}">
+                    <div class="cart">
+                        <h2>Shopping Cart - ${userName}</h2>
+                        <hr>
                         <p>${game.nom} - ${game.preuLloguer}€</p>
                     
                         <form action="Rent" method="get" target="_blank">
@@ -36,6 +35,9 @@
                         </form>
                     </div>
                 </c:if>
+        <div class="container">
+        <div class="row">
+            
             <div class="col-md-6">
                 <img src="${pageContext.request.contextPath}/resources/img/${game.nom}.jpg" alt="${game.nom}" class="gameImage">
             </div>

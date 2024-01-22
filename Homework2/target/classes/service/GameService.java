@@ -71,18 +71,7 @@ public class GameService {
             if (tipoCoincide || consolaCoincide) {
                 gamesFiltrados.add(game);
             }
-            //if ((accion != null && accion.equals(game.getTipus())) ||
-            //(aventura != null && aventura.equals(game.getTipus())) ||
-            //(deporte != null && deporte.equals(game.getTipus()))) {
             
-            // Verificar si la consola del juego coincide con alguno de los filtros seleccionados
-            //if ((gameBoy != null && gameBoy.equals(game.getVideoconsola())) ||
-            //    (pc != null && pc.equals(game.getVideoconsola())) ||
-            //    (ps5 != null && ps5.equals(game.getVideoconsola()))) {
-                
-                // Si coincide con los criterios de filtro, agregarlo a la lista de juegos filtrados
-            //    gamesFiltrados.add(game);
-            //}
         }
         
         
