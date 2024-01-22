@@ -43,7 +43,6 @@ public class RentController {
         
         models.put("userName", userName);
         
-        models.put("buyConfirmed", false);
         System.out.println("USERNAMEONRENT: "+userName);
         System.out.println("GAMEONRENT: "+gameId);
         return "rentConfirmation.jsp";
@@ -80,10 +79,11 @@ public class RentController {
             // Verificar si la renta fue exitosa (puedes ajustar esto según la estructura de tu respuesta)
             if (response != null) {
                
-                // Poner los detalles de la renta en el modelo
+                //Poner los detalles de la renta en el modelo
                 models.put("rebutLloguer", response);
-                models.put("buyConfirmed", true);
-                return "redirect:/Rent";
+                //models.put("buyConfirmed", true);
+                //return "redirect:/Rent";
+                return "receipt.jsp";
             } else {
                 models.put("error", "Error al realizar la renta.");
                 return "redirect:/Error";

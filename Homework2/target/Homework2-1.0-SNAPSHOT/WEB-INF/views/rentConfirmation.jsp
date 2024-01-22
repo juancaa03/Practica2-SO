@@ -21,15 +21,7 @@
     </head>
     <body>
         <p>Name: ${userName}</p>
-        <c:if test="${buyConfirmed}">
-            <h1>Receipt</h1>
-            <p>Rent ID: ${rebutLloguer.id}</p>
-            <p>Fecha de Inicio: ${rebutLloguer.dataInici}</p>
-            <p>Fecha de Fin: ${rebutLloguer.dataFi}</p>
-            <p>Precio Total: ${rebutLloguer.preuTotal}</p>
-        </c:if>
-            
-        <c:if test="${!buyConfirmed}">
+        
             <h1>Rent Confirmation</h1>
             
             <p>Rent time: 1 week</p>
@@ -38,9 +30,8 @@
             <form action="${mvc.uri('rent')}" method="post">
                 <input type="hidden" name="gameId" value="${game.id}">
                 <input type="hidden" name="userName" value="${userName}">
-                <button id="addtocart" type="submit">BUY IT</button>
+                <button id="" type="submit">BUY IT</button>
             </form>
-        </c:if>
         
         <a href="Main">Volver a la página principal</a>
     </body>
