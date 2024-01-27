@@ -83,3 +83,8 @@ p {
     height: 100vh;
 }
 
+.disponibilidad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

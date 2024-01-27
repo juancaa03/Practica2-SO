@@ -52,9 +52,9 @@
                 <p>Precio: ${game.preuLloguer}€</p>
                 <p>Tipo: ${game.tipus}</p>
                 <p>Descripción: ${game.descripcio}</p>
-                <p>${game.disponibilitat ? 'Disponible' : 'No disponible'}</p>
+                <p style="color: ${game.disponibilitat ? 'greenyellow' : 'red'}">${game.disponibilitat ? 'Disponible' : 'No disponible'}</p>
                 <p>Tipo de videoconsola: ${game.videoconsola}</p>
-                <p>Adreça botigues: ${game.adrecaBotigues}</p>
+                <p>Dirección de la tienda: ${game.adrecaBotigues}</p>
                 
                 <form action="${mvc.uri('addToCart')}" method="post">
                     <input type="hidden" name="gameId" value="${game.id}">
